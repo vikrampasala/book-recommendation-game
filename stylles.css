@@ -1,0 +1,295 @@
+/* Clean UI styling utilizing CSS Variables for easy scaling */
+:root {
+  --bg-primary: #141414; /* Deep streaming canvas */
+  --card-bg: #1f1f1f;
+  --accent: #e50914; /* Premium brand accent color */
+  --text-main: #ffffff;
+  --text-muted: #aaaaaa;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Step UI & Choice Mapping */
+.question-text {
+  font-size: 18px;
+  margin-bottom: 24px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+button.btn-option {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  color: var(--text-main);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  transition: all var(--transition-speed) ease;
+}
+
+button.btn-option:hover {
+  background-color: #333333;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Recommendation Outcome Layout - Refactored for real Images */
+.result-card {
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.book-cover-container {
+  width: 140px;
+  height: 210px; /* 2:3 Cinematic ratio ideal for book covers */
+  margin: 0 auto 20px auto;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+  background-color: #2a2a2a;
+  border: 1px solid #333;
+}
+
+.book-cover-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Protects aspect ratios against skewing distortions */
+}
+
+.book-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.book-author {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.book-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cccccc;
+  margin-bottom: 24px;
+}
+
+.btn-action {
+  background-color: var(--accent);
+  color: var(--text-main);
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity var(--transition-speed);
+}
+
+.btn-action:hover {
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Layout Adjustment for Side-by-Side Action Buttons */
+.action-grid {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* TARGET BOTH BUTTONS: Forces them to split the container width perfectly 50/50 */
+.action-grid .btn-action,
+.action-grid .btn-secondary {
+  flex: 1;          /* Equal horizontal scaling */
+  padding: 14px;
+  border-radius: var(--border-radius);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-speed);
+}
+
+/* Match Another Button Specific Colors */
+.action-grid .btn-action {
+  background-color: var(--accent);
+  color: var(--text-main);
+  border: none;
+}
+
+.action-grid .btn-action:hover {
+  opacity: 0.9;
+}
+
+/* Add to My List Button Specific Colors */
+.action-grid .btn-secondary {
+  background-color: #2a2a2a;
+  color: var(--text-main);
+  border: 1px solid #444;
+}
+
+.action-grid .btn-secondary:hover {
+  background-color: #333;
+  border-color: #888;
+}
+/* ==========================================
+   PREMIUM REFACTORED WATCHLIST UI MODULE
+   ========================================== */
+.watchlist-section {
+  margin-top: 35px;
+  border-top: 2px solid #2a2a2a;
+  padding-top: 25px;
+}
+
+.watchlist-section h3 {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Flexbox tag grid structure instead of a boring vertical list */
+#watchlist-ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* Lets tags wrap down to the next row naturally */
+  gap: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 4px;
+}
+
+/* Styled to look like premium, sleek interactive badges */
+#watchlist-ul li {
+  background-color: #262626;
+  border: 1px solid #333;
+  padding: 8px 12px;
+  border-radius: 20px; /* Rounded pill shape matching modern UI trends */
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  animation: fadeIn 0.25s ease-out;
+  transition: border-color var(--transition-speed);
+}
+
+#watchlist-ul li:hover {
+  border-color: var(--accent); /* Subtle glow effect on hover */
+}
+
+#watchlist-ul li span {
+  font-weight: 500;
+  color: #e5e5e5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Minimalist, subtle delete icon */
+.btn-delete-item {
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-speed);
+}
+
+.btn-delete-item:hover {
+  color: #ff4444; /* Highlights red only when hovering to prevent distraction */
+}
+
+/* Clean, modern utility action link placement */
+.btn-clear {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin: 0 auto;
+  transition: color var(--transition-speed);
+}
+
+.btn-clear:hover {
+  color: var(--text-muted);
+}
+
+/* Custom Scrollbar handling for clean workspace layout tracking */
+#watchlist-ul::-webkit-scrollbar {
+  width: 4px;
+}
+#watchlist-ul::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 4px;
+}

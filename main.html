@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Discovery Engine</title>
+  <link rel="stylesheet" href="stylles.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <h1>Book Matcher</h1>
+
+    <!-- Step 1: Mood Filtering -->
+    <div id="screen-mood" class="screen active">
+      <p class="question-text">Select your current vibe:</p>
+      <div class="options-grid">
+        <button class="btn-option" onclick="selectChoice('mood', 'thrilling')">⚡ Thrilling & Fast-Paced</button>
+        <button class="btn-option" onclick="selectChoice('mood', 'thoughtful')">🧠 Deep & Thought-Provoking</button>
+        <button class="btn-option" onclick="selectChoice('mood', 'magical')">✨ Magical & Epic</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Setting Filtering -->
+    <div id="screen-setting" class="screen">
+      <p class="question-text">Where do you want to escape?</p>
+      <div class="options-grid">
+        <button class="btn-option" onclick="selectChoice('setting', 'future')">🚀 Advanced Future</button>
+        <button class="btn-option" onclick="selectChoice('setting', 'historical')">⏳ Historical Kingdoms</button>
+        <button class="btn-option" onclick="selectChoice('setting', 'real')">🏢 Modern Reality</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Core Outcome State -->
+    <div id="screen-result" class="screen">
+      <div class="result-card">
+        <div class="book-cover-container">
+          <img id="book-cover" src="" alt="Book Cover Artwork">
+        </div>
+        <div class="book-title" id="book-title">Book Title</div>
+        <div class="book-author" id="book-author">By Author</div>
+        <p class="book-desc" id="book-desc">Detailed book description.</p>
+        
+        <!-- Action Buttons Layout Grid -->
+        <div class="action-grid">
+          <button class="btn-action" onclick="resetGame()">🔄 Match Another</button>
+          <button id="btn-save" class="btn-secondary" onclick="saveCurrentToWatchlist()">➕ Add to My List</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- NETFLIX WATCHLIST INTERFACE MODULE -->
+    <div class="watchlist-section">
+      <h3>My Readlist</h3>
+      <ul id="watchlist-ul">
+        <!-- JavaScript will dynamically inject item nodes here -->
+      </ul>
+      <button class="btn-clear" onclick="clearWatchlistCache()">🧹 Clear All Items</button>
+    </div>
+
+  </div> <!-- Close app-container -->
+
+  <script src="books-data.js"></script>
+  <script src="book.js"></script>
+</body>
+</html>
